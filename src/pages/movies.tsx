@@ -43,6 +43,13 @@ export const movies = [
     author: "Bruce Joel Rubin",
     type: "love",
   },
+  {
+    id: 6,
+    name: "Test513",
+    release: 2012,
+    author: "Bruce Joel Rubin",
+    type: "love",
+  },
 ];
 
 const releasesDates = [
