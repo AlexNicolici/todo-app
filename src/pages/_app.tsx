@@ -1,6 +1,7 @@
 import "../styles/Home/Home.css";
 import "../styles/Navbar/Navbar.css";
 import "../styles/Movies/movies.css";
+import "../styles/globals.css";
 
 import Navbar from "./components/Navbar";
 import { AppProps } from "next/app";

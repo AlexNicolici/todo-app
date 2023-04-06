@@ -126,7 +126,7 @@ function Movies() {
     setSortedOrderAscending(isAscending);
   };
 
-  console.log("filterByRelease", filterByRelease);
+  // console.log("filterByRelease", filterByRelease);
   // console.log("sortedKey", sortedKey);
   // console.log("sortedOrderAscending", sortedOrderAscending);
 
@@ -179,8 +179,6 @@ function Movies() {
 
   const handleDeleteMovie = (e, item) => {
     e.preventDefault();
-
-    console.log("item", item);
 
     const deleteMovie = sortedList.filter((movie) => {
       if (movie.id !== item.id) {
@@ -237,6 +235,12 @@ function Movies() {
           {releasesDates.map((item) => {
             return (
               <button
+                className={
+                  filterByRelease.ageStart === item.start &&
+                  filterByRelease.ageEnd === item.end
+                    ? "selected-item"
+                    : ""
+                }
                 onClick={(e) => onClickFilterAge(e, item.start, item.end)}
                 key={`${item.start}-${item.end}`}
               >
@@ -244,7 +248,10 @@ function Movies() {
               </button>
             );
           })}
-          <button onClick={(e) => onClickFilterAge(e, null)}>
+          <button
+            className={filterByRelease.ageStart === null ? "selected-item" : ""}
+            onClick={(e) => onClickFilterAge(e, null)}
+          >
             <p>All</p>
           </button>
         </div>
@@ -265,8 +272,9 @@ function Movies() {
           {sortingCategories.map((item) => {
             return (
               <button
-                onClick={(e) => onClickCategorySorting(e, item)}
                 key={`sorting-category-${item}`}
+                onClick={(e) => onClickCategorySorting(e, item)}
+                className={sortedKey === item ? "selected-item" : ""}
               >
                 {item.toUpperCase()}
               </button>
@@ -278,8 +286,18 @@ function Movies() {
       <div className="sorted-movies-container">
         <h3>Sort movies order:</h3>
         <div>
-          <button onClick={(e) => onClickSorting(e, true)}>Ascending</button>
-          <button onClick={(e) => onClickSorting(e, false)}>Descending</button>
+          <button
+            className={sortedOrderAscending === true ? "selected-item" : ""}
+            onClick={(e) => onClickSorting(e, true)}
+          >
+            Ascending
+          </button>
+          <button
+            className={sortedOrderAscending === false ? "selected-item" : ""}
+            onClick={(e) => onClickSorting(e, false)}
+          >
+            Descending
+          </button>
         </div>
       </div>
 
@@ -351,7 +369,10 @@ function Movies() {
                 <p>Release: {item.release}</p>
                 <p>Author: {item.author}</p>
                 <p>Type: {item.type}</p>
-                <button onClick={(e) => handleDeleteMovie(e, item)}>
+                <button
+                  style={{ marginBottom: 5 }}
+                  onClick={(e) => handleDeleteMovie(e, item)}
+                >
                   Delete
                 </button>
               </li>
