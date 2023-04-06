@@ -1,0 +1,40 @@
+.bordered-settings-container {
+  border: 3px solid rgb(63, 61, 61);
+  border-radius: 10px;
+  background-image: url("https://c4.wallpaperflare.com/wallpaper/448/174/357/neon-4k-hd-best-for-desktop-wallpaper-preview.jpg");
+  background-repeat: no-repeat;
+  width: 520px;
+  padding: 100px 100px 130px 100px;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  button {
+    color: white;
+    background-color: rgb(212, 34, 64);
+    border: 2px solid rgb(192, 54, 111);
+    border-radius: 5px;
+    font-size: 20px;
+    width: 250px;
+    &:hover {
+      cursor: pointer;
+      transition: 0.25s;
+      color: rgb(212, 34, 64);
+      background-color: white;
+    }
+  }
+
+  .hello-message-container {
+    color: white;
+    h3 {
+      font-size: 30px;
+      margin-bottom: 1px;
+    }
+  }
+}
+
+.navbar-practice {
+  list-style: none;
+}

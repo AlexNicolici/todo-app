@@ -1,0 +1,96 @@
+.movies-page {
+  .movies-list {
+    ul {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      li {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid black;
+        min-width: 300px;
+        margin-bottom: 5px;
+      }
+    }
+  }
+
+  .global-search-container {
+    background-color: rgb(213, 243, 243);
+    margin-top: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    h3 {
+      margin-top: 0;
+    }
+  }
+
+  .filter-age-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    .buttons-container {
+      button {
+        margin-right: 5px;
+        width: 90px;
+      }
+    }
+  }
+
+  .sorted-movies-container {
+    background-color: aqua;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    h3 {
+      margin-top: 0;
+    }
+  }
+
+  .add-new-movie-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    button {
+      margin-bottom: 30px;
+    }
+    .inputs-new-movie {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      input {
+        min-width: 200px;
+      }
+      input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+    }
+  }
+
+  .sorted-by-container {
+    background-color: beige;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    h3 {
+      margin-top: 0;
+    }
+    button {
+      margin-right: 8px;
+      min-width: 80px;
+    }
+  }
+}
