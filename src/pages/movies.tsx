@@ -31,24 +31,38 @@ export const movies = [
   },
   {
     id: 5,
-    name: "Sef",
-    release: 2003,
-    author: "Bruce Joel Rubin",
-    type: "love",
-  },
-  {
-    id: 5,
-    name: "Sef",
-    release: 2007,
-    author: "Bruce Joel Rubin",
-    type: "love",
+    name: "Sing Street",
+    release: 2016,
+    author: "John Carney ",
+    type: "comedy-drama",
   },
   {
     id: 6,
-    name: "Test513",
-    release: 2012,
-    author: "Bruce Joel Rubin",
-    type: "love",
+    name: "Selma",
+    release: 2014,
+    author: "Ava DuVernay",
+    type: "drama-history",
+  },
+  {
+    id: 7,
+    name: "Paddington",
+    release: 2014,
+    author: "Paul King",
+    type: "adventure",
+  },
+  {
+    id: 8,
+    name: "Memento",
+    release: 2000,
+    author: "Christopher Nolan",
+    type: "mistery-thriller",
+  },
+  {
+    id: 9,
+    name: "Half Nelson",
+    release: 2006,
+    author: "Ryan Fleck ",
+    type: "drama",
   },
 ];
 
@@ -91,6 +105,7 @@ function Movies() {
   const [addNewMovieAuthor, setAddNewMovieAuthor] = useState("");
   const [addNewMovieType, setAddNewMovieType] = useState("");
   const [globalSearchList, setGlobalSearchList] = useState("");
+  const [addMovieButton, setAddMovieButton] = useState(true);
 
   const onClickFilterAge = (
     e: any,
@@ -281,35 +296,50 @@ function Movies() {
       </div> */}
       <br></br>
 
+      <div className="add-new-movie-button">
+        {addMovieButton && (
+          <button onClick={() => setAddMovieButton((prev) => !prev)}>
+            ADD A NEW MOVIE
+          </button>
+        )}
+        {!addMovieButton && (
+          <button onClick={() => setAddMovieButton((prev) => !prev)}>
+            BACK
+          </button>
+        )}
+      </div>
+
       <div className="add-new-movie-container">
-        <h3>Add a new movie:</h3>
-        <div className="inputs-new-movie">
-          <input
-            type="text"
-            placeholder="Write your movie name"
-            value={addNewMovieName}
-            onChange={(e) => setAddNewMovieName(e.target.value)}
-          />
-          <input
-            type="number"
-            placeholder="Release data"
-            value={addNewMovieData}
-            onChange={(e) => setAddNewMovieData(e.target.value)}
-          />
-          <input
-            type="text"
-            placeholder="Author"
-            value={addNewMovieAuthor}
-            onChange={(e) => setAddNewMovieAuthor(e.target.value)}
-          />
-          <input
-            type="text"
-            placeholder="Type of movie"
-            value={addNewMovieType}
-            onChange={(e) => setAddNewMovieType(e.target.value)}
-          />
-        </div>
-        <button onClick={handleNewMovie}>Add your movie!</button>
+        {!addMovieButton && <h3>Add a new movie:</h3>}
+        {!addMovieButton && (
+          <div className="inputs-new-movie">
+            <input
+              type="text"
+              placeholder="Write your movie name"
+              value={addNewMovieName}
+              onChange={(e) => setAddNewMovieName(e.target.value)}
+            />
+            <input
+              type="number"
+              placeholder="Release data"
+              value={addNewMovieData}
+              onChange={(e) => setAddNewMovieData(e.target.value)}
+            />
+            <input
+              type="text"
+              placeholder="Author"
+              value={addNewMovieAuthor}
+              onChange={(e) => setAddNewMovieAuthor(e.target.value)}
+            />
+            <input
+              type="text"
+              placeholder="Type of movie"
+              value={addNewMovieType}
+              onChange={(e) => setAddNewMovieType(e.target.value)}
+            />
+            <button onClick={handleNewMovie}>Add your movie!</button>
+          </div>
+        )}
       </div>
 
       <div className="movies-list">

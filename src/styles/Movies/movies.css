@@ -44,6 +44,11 @@
 .movies-page .sorted-movies-container h3 {
   margin-top: 0;
 }
+.movies-page .add-new-movie-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .movies-page .add-new-movie-container {
   display: flex;
   flex-direction: column;
