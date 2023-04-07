@@ -7,13 +7,24 @@ function SortingComponent({
   sortedOrderAscending,
   setSortedKey,
   setSortedOrderAscending,
+}: {
+  sortedKey: string;
+  sortedOrderAscending: boolean;
+  setSortedKey: (value: string) => void;
+  setSortedOrderAscending: (value: boolean) => void;
 }) {
-  const onClickCategorySorting = (e, key) => {
+  const onClickCategorySorting = (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+    key: string
+  ) => {
     e.preventDefault();
     setSortedKey(key);
   };
 
-  const onClickSorting = (e, isAscending) => {
+  const onClickSorting = (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+    isAscending: boolean
+  ) => {
     e.preventDefault();
     setSortedOrderAscending(isAscending);
   };

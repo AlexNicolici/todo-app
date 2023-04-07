@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 
 function AddMovieComponent({ moviesList, setMoviesList }) {
-  const [addMovieButton, setAddMovieButton] = useState(true);
-  const [addNewMovieName, setAddNewMovieName] = useState("");
-  const [addNewMovieData, setAddNewMovieData] = useState("");
-  const [addNewMovieAuthor, setAddNewMovieAuthor] = useState("");
-  const [addNewMovieType, setAddNewMovieType] = useState("");
+  const [addMovieButton, setAddMovieButton] = useState<boolean>(true);
+  const [addNewMovieName, setAddNewMovieName] = useState<string>("");
+  const [addNewMovieData, setAddNewMovieData] = useState<number | string>("");
+  const [addNewMovieAuthor, setAddNewMovieAuthor] = useState<string>("");
+  const [addNewMovieType, setAddNewMovieType] = useState<string>("");
 
-  const handleNewMovie = (e) => {
+  const handleNewMovie = (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
     e.preventDefault();
 
     const sortedMovieList = [...moviesList].sort((a, b) => {
@@ -30,7 +32,7 @@ function AddMovieComponent({ moviesList, setMoviesList }) {
 
     const emptyInputs =
       addNewMovieName.trim() &&
-      addNewMovieData.trim() &&
+      addNewMovieData &&
       addNewMovieAuthor.trim() &&
       addNewMovieType.trim();
 

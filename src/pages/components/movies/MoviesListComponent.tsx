@@ -1,3 +1,4 @@
+import { MovieInterface } from "@/pages/movies";
 import React from "react";
 
 function MoviesListComponent({
@@ -7,8 +8,21 @@ function MoviesListComponent({
   sortedOrderAscending,
   sortedKey,
   setMoviesList,
+}: {
+  filterByRelease: {
+    ageStart: number | null;
+    ageEnd: number | null;
+  };
+  moviesList: MovieInterface[];
+  globalSearchList: string;
+  sortedOrderAscending: boolean;
+  sortedKey: string;
+  setMoviesList: (value: MovieInterface[]) => void;
 }) {
-  const handleDeleteMovie = (e, item) => {
+  const handleDeleteMovie = (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+    item: any
+  ) => {
     e.preventDefault();
 
     const deleteMovie = sortedList.filter((movie) => {

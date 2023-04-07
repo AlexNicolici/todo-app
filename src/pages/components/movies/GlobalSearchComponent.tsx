@@ -1,6 +1,12 @@
 import React from "react";
 
-function GlobalSearchComponent({ globalSearchList, setGlobalSearchList }) {
+function GlobalSearchComponent({
+  globalSearchList,
+  setGlobalSearchList,
+}: {
+  globalSearchList: string;
+  setGlobalSearchList: (value: string) => void;
+}) {
   return (
     <div>
       <div className="global-search-container">

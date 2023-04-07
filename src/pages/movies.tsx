@@ -5,7 +5,15 @@ import AddMovieComponent from "./components/movies/AddMovieComponent";
 import GlobalSearchComponent from "./components/movies/GlobalSearchComponent";
 import MoviesListComponent from "./components/movies/MoviesListComponent";
 
-export const movies = [
+export interface MovieInterface {
+  id: number;
+  name: string;
+  release: number;
+  author: string;
+  type: string;
+}
+
+export const movies: MovieInterface[] = [
   {
     id: 1,
     name: "John Wick: Chapter 4",
@@ -72,8 +80,16 @@ export const movies = [
 ];
 
 function Movies() {
-  const [moviesList, setMoviesList] = useState<any[]>(movies);
-  const [globalSearchList, setGlobalSearchList] = useState("");
+  const [moviesList, setMoviesList] = useState<
+    {
+      id: number;
+      name: string;
+      release: number;
+      author: string;
+      type: string;
+    }[]
+  >(movies);
+  const [globalSearchList, setGlobalSearchList] = useState<string>("");
   const [filterByRelease, setFilterByRelease] = useState<{
     ageStart: number | null;
     ageEnd: number | null;
@@ -81,8 +97,9 @@ function Movies() {
     ageStart: null,
     ageEnd: null,
   });
-  const [sortedKey, setSortedKey] = useState("release");
-  const [sortedOrderAscending, setSortedOrderAscending] = useState(true);
+  const [sortedKey, setSortedKey] = useState<string>("release");
+  const [sortedOrderAscending, setSortedOrderAscending] =
+    useState<boolean>(true);
 
   return (
     <div className="movies-page">
@@ -102,8 +119,6 @@ function Movies() {
         sortedOrderAscending={sortedOrderAscending}
         setSortedOrderAscending={setSortedOrderAscending}
       />
-
-      <br></br>
 
       <AddMovieComponent
         moviesList={moviesList}
