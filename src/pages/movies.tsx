@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import FilterComponent from "./components/movies/FilterComponent";
 import SortingComponent from "./components/movies/SortingComponent";
 import AddMovieComponent from "./components/movies/AddMovieComponent";
+import GlobalSearchComponent from "./components/movies/GlobalSearchComponent";
 
 export const movies = [
   {
@@ -134,14 +135,11 @@ function Movies() {
 
   return (
     <div className="movies-page">
-      <div className="global-search-container">
-        <h3>Global movies search:</h3>
-        <input
-          placeholder="Search your movie"
-          value={globalSearchList}
-          onChange={(e) => setGlobalSearchList(e.target.value)}
-        />
-      </div>
+      <GlobalSearchComponent
+        globalSearchList={globalSearchList}
+        setGlobalSearchList={setGlobalSearchList}
+      />
+
       <FilterComponent
         filterByRelease={filterByRelease}
         setFilterByRelease={setFilterByRelease}
@@ -154,17 +152,6 @@ function Movies() {
         setSortedOrderAscending={setSortedOrderAscending}
       />
 
-      {/* <div className="sorted-movies-container">
-        <h3>Sort movies by name:</h3>
-        <div>
-          <button onClick={(e) => onClickSorting(e, "name", true)}>
-            Ascending
-          </button>
-          <button onClick={(e) => onClickSorting(e, "name", false)}>
-            Descending
-          </button>
-        </div>
-      </div> */}
       <br></br>
 
       <AddMovieComponent
