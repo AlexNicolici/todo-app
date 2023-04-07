@@ -4,7 +4,7 @@
   min-height: 100vh;
 }
 .movies-page button {
-  font-size: 16px;
+  font-size: 14px;
   color: white;
   background-color: rgba(216, 192, 146, 0.863);
   border: 1px solid rgba(194, 170, 127, 0.863);

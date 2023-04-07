@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import FilterComponent from "./components/movies/FilterComponent";
 
 export const movies = [
   {
@@ -66,35 +67,14 @@ export const movies = [
   },
 ];
 
-const releasesDates = [
-  {
-    start: 1990,
-    end: 2000,
-  },
-  {
-    start: 2000,
-    end: 2003,
-  },
-  {
-    start: 2000,
-    end: 2010,
-  },
-
-  {
-    start: 2010,
-    end: 2020,
-  },
-  {
-    start: 2020,
-    end: 2030,
-  },
-];
-
 const sortingCategories = ["name", "release", "author", "type"];
 
 function Movies() {
   const [moviesList, setMoviesList] = useState<any[]>(movies);
-  const [filterByRelease, setFilterByRelease] = useState({
+  const [filterByRelease, setFilterByRelease] = useState<{
+    ageStart: number | null;
+    ageEnd: number | null;
+  }>({
     ageStart: null,
     ageEnd: null,
   });
@@ -106,15 +86,6 @@ function Movies() {
   const [addNewMovieType, setAddNewMovieType] = useState("");
   const [globalSearchList, setGlobalSearchList] = useState("");
   const [addMovieButton, setAddMovieButton] = useState(true);
-
-  const onClickFilterAge = (
-    e: any,
-    ageStart: number | null,
-    ageEnd?: number | null
-  ) => {
-    e.preventDefault();
-    setFilterByRelease({ ageStart, ageEnd });
-  };
 
   const onClickCategorySorting = (e, key) => {
     e.preventDefault();
@@ -229,34 +200,6 @@ function Movies() {
 
   return (
     <div className="movies-page">
-      <div className="filter-age-container">
-        <h3>Filter your movies by age:</h3>
-        <div className="buttons-container">
-          {releasesDates.map((item) => {
-            return (
-              <button
-                className={
-                  filterByRelease.ageStart === item.start &&
-                  filterByRelease.ageEnd === item.end
-                    ? "selected-item"
-                    : ""
-                }
-                onClick={(e) => onClickFilterAge(e, item.start, item.end)}
-                key={`${item.start}-${item.end}`}
-              >
-                <p>{`${item.start}-${item.end}`}</p>
-              </button>
-            );
-          })}
-          <button
-            className={filterByRelease.ageStart === null ? "selected-item" : ""}
-            onClick={(e) => onClickFilterAge(e, null)}
-          >
-            <p>All</p>
-          </button>
-        </div>
-      </div>
-
       <div className="global-search-container">
         <h3>Global movies search:</h3>
         <input
@@ -265,6 +208,10 @@ function Movies() {
           onChange={(e) => setGlobalSearchList(e.target.value)}
         />
       </div>
+      <FilterComponent
+        filterByRelease={filterByRelease}
+        setFilterByRelease={setFilterByRelease}
+      />
 
       <div className="sorted-by-container">
         <h3>Sort movies by:</h3>
