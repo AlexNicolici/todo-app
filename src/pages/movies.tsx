@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import FilterComponent from "./components/movies/FilterComponent";
 import SortingComponent from "./components/movies/SortingComponent";
+import AddMovieComponent from "./components/movies/AddMovieComponent";
 
 export const movies = [
   {
@@ -80,58 +81,6 @@ function Movies() {
   });
   const [sortedKey, setSortedKey] = useState("release");
   const [sortedOrderAscending, setSortedOrderAscending] = useState(true);
-  const [addNewMovieName, setAddNewMovieName] = useState("");
-  const [addNewMovieData, setAddNewMovieData] = useState("");
-  const [addNewMovieAuthor, setAddNewMovieAuthor] = useState("");
-  const [addNewMovieType, setAddNewMovieType] = useState("");
-  const [addMovieButton, setAddMovieButton] = useState(true);
-
-  const handleNewMovie = (e) => {
-    e.preventDefault();
-
-    const sortedMovieList = [...moviesList].sort((a, b) => {
-      return a.id - b.id;
-    });
-
-    const checkIfExists = moviesList.some((movie) => {
-      return (
-        movie.name.toLowerCase() === addNewMovieName.toLowerCase() &&
-        movie.author.toLowerCase() === addNewMovieAuthor.toLowerCase()
-      );
-    });
-
-    if (checkIfExists) {
-      alert("This movie already exists!");
-      setAddNewMovieAuthor("");
-      setAddNewMovieName("");
-      return;
-    }
-
-    const emptyInputs =
-      addNewMovieName.trim() &&
-      addNewMovieData.trim() &&
-      addNewMovieAuthor.trim() &&
-      addNewMovieType.trim();
-
-    if (!emptyInputs) {
-      alert("Can't add movie with empty spaces!");
-      return;
-    }
-
-    const newMovieId = sortedMovieList[sortedMovieList.length - 1].id + 1;
-
-    const newMovie = {
-      id: newMovieId,
-      name: addNewMovieName,
-      release: addNewMovieData,
-      author: addNewMovieAuthor,
-      type: addNewMovieType,
-    };
-
-    setMoviesList((prev) => {
-      return [newMovie, ...prev];
-    });
-  };
 
   const handleDeleteMovie = (e, item) => {
     e.preventDefault();
@@ -218,51 +167,10 @@ function Movies() {
       </div> */}
       <br></br>
 
-      <div className="add-new-movie-button">
-        {addMovieButton && (
-          <button onClick={() => setAddMovieButton((prev) => !prev)}>
-            ADD A NEW MOVIE
-          </button>
-        )}
-        {!addMovieButton && (
-          <button onClick={() => setAddMovieButton((prev) => !prev)}>
-            BACK
-          </button>
-        )}
-      </div>
-
-      <div className="add-new-movie-container">
-        {!addMovieButton && <h3>Add a new movie:</h3>}
-        {!addMovieButton && (
-          <div className="inputs-new-movie">
-            <input
-              type="text"
-              placeholder="Write your movie name"
-              value={addNewMovieName}
-              onChange={(e) => setAddNewMovieName(e.target.value)}
-            />
-            <input
-              type="number"
-              placeholder="Release data"
-              value={addNewMovieData}
-              onChange={(e) => setAddNewMovieData(e.target.value)}
-            />
-            <input
-              type="text"
-              placeholder="Author"
-              value={addNewMovieAuthor}
-              onChange={(e) => setAddNewMovieAuthor(e.target.value)}
-            />
-            <input
-              type="text"
-              placeholder="Type of movie"
-              value={addNewMovieType}
-              onChange={(e) => setAddNewMovieType(e.target.value)}
-            />
-            <button onClick={handleNewMovie}>Add your movie!</button>
-          </div>
-        )}
-      </div>
+      <AddMovieComponent
+        moviesList={moviesList}
+        setMoviesList={setMoviesList}
+      />
 
       <div className="movies-list">
         <ul>
