@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import FilterComponent from "./components/movies/FilterComponent";
+import SortingComponent from "./components/movies/SortingComponent";
 
 export const movies = [
   {
@@ -67,10 +68,9 @@ export const movies = [
   },
 ];
 
-const sortingCategories = ["name", "release", "author", "type"];
-
 function Movies() {
   const [moviesList, setMoviesList] = useState<any[]>(movies);
+  const [globalSearchList, setGlobalSearchList] = useState("");
   const [filterByRelease, setFilterByRelease] = useState<{
     ageStart: number | null;
     ageEnd: number | null;
@@ -84,22 +84,7 @@ function Movies() {
   const [addNewMovieData, setAddNewMovieData] = useState("");
   const [addNewMovieAuthor, setAddNewMovieAuthor] = useState("");
   const [addNewMovieType, setAddNewMovieType] = useState("");
-  const [globalSearchList, setGlobalSearchList] = useState("");
   const [addMovieButton, setAddMovieButton] = useState(true);
-
-  const onClickCategorySorting = (e, key) => {
-    e.preventDefault();
-    setSortedKey(key);
-  };
-
-  const onClickSorting = (e, isAscending) => {
-    e.preventDefault();
-    setSortedOrderAscending(isAscending);
-  };
-
-  // console.log("filterByRelease", filterByRelease);
-  // console.log("sortedKey", sortedKey);
-  // console.log("sortedOrderAscending", sortedOrderAscending);
 
   const handleNewMovie = (e) => {
     e.preventDefault();
@@ -213,40 +198,12 @@ function Movies() {
         setFilterByRelease={setFilterByRelease}
       />
 
-      <div className="sorted-by-container">
-        <h3>Sort movies by:</h3>
-        <div>
-          {sortingCategories.map((item) => {
-            return (
-              <button
-                key={`sorting-category-${item}`}
-                onClick={(e) => onClickCategorySorting(e, item)}
-                className={sortedKey === item ? "selected-item" : ""}
-              >
-                {item.toUpperCase()}
-              </button>
-            );
-          })}
-        </div>
-      </div>
-
-      <div className="sorted-movies-container">
-        <h3>Sort movies order:</h3>
-        <div>
-          <button
-            className={sortedOrderAscending === true ? "selected-item" : ""}
-            onClick={(e) => onClickSorting(e, true)}
-          >
-            Ascending
-          </button>
-          <button
-            className={sortedOrderAscending === false ? "selected-item" : ""}
-            onClick={(e) => onClickSorting(e, false)}
-          >
-            Descending
-          </button>
-        </div>
-      </div>
+      <SortingComponent
+        sortedKey={sortedKey}
+        setSortedKey={setSortedKey}
+        sortedOrderAscending={sortedOrderAscending}
+        setSortedOrderAscending={setSortedOrderAscending}
+      />
 
       {/* <div className="sorted-movies-container">
         <h3>Sort movies by name:</h3>
