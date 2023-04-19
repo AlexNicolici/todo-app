@@ -1,3 +1,7 @@
+$color_orange: rgb(221, 150, 109);
+$color_peach: rgba(216, 192, 146, 0.863);
+$color_light_peach: rgba(221, 210, 187, 0.863);
+
 .movies-page {
   background-image: url("../../assets/images/background2.jpg");
   background-color: #cccccc;
@@ -5,14 +9,14 @@
   button {
     font-size: 14px;
     color: white;
-    background-color: rgba(216, 192, 146, 0.863);
-    border: 1px solid rgba(194, 170, 127, 0.863);
+    background-color: $color_peach;
+    border: 1px solid $color_peach;
     border-radius: 8px;
 
     &:hover {
       cursor: pointer;
-      color: rgb(221, 150, 109);
-      background-color: rgba(221, 210, 187, 0.863);
+      color: $orange;
+      background-color: $color_light_peach;
     }
   }
   .movies-list {
@@ -43,7 +47,12 @@
     justify-content: center;
     align-items: center;
     border-bottom: 3px solid grey;
-
+    .search-bar {
+      background-color: rgba(213, 243, 243);
+      border: 1px solid rgba(194, 170, 127, 0.863);
+      border-radius: 5px;
+      outline-color: #d1d1d1;
+    }
     h3 {
       margin-top: 0;
     }
@@ -56,16 +65,6 @@
     flex-direction: column;
     border-bottom: 3px solid grey;
     padding: 20px;
-    .buttons-container {
-      display: flex;
-      justify-content: space-evenly;
-      width: 100%;
-      flex-wrap: wrap;
-      button {
-        margin-right: 5px;
-        width: 140px;
-      }
-    }
   }
 
   .sorted-movies-container {
@@ -131,4 +130,17 @@
 .selected-item {
   background-color: rgba(213, 243, 243) !important;
   color: black !important;
+}
+
+.select-container {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  outline-color: #d1d1d1;
+  background-color: rgba(213, 243, 243);
+  border-color: rgba(194, 170, 127, 0.863);
+  border-radius: 5px;
+  option {
+    text-align: left;
+  }
 }

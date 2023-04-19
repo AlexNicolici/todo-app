@@ -91,9 +91,11 @@ function Movies() {
   >(movies);
   const [globalSearchList, setGlobalSearchList] = useState<string>("");
   const [filterByRelease, setFilterByRelease] = useState<{
+    id: number | string;
     ageStart: number | null;
     ageEnd: number | null;
   }>({
+    id: null,
     ageStart: null,
     ageEnd: null,
   });

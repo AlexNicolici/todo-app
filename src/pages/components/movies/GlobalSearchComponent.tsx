@@ -12,6 +12,7 @@ function GlobalSearchComponent({
       <div className="global-search-container">
         <h3>Global movies search:</h3>
         <input
+          className="search-bar"
           placeholder="Search your movie"
           value={globalSearchList}
           onChange={(e) => setGlobalSearchList(e.target.value)}

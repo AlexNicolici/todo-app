@@ -40,6 +40,12 @@
   align-items: center;
   border-bottom: 3px solid grey;
 }
+.movies-page .global-search-container .search-bar {
+  background-color: rgb(213, 243, 243);
+  border: 1px solid rgba(194, 170, 127, 0.863);
+  border-radius: 5px;
+  outline-color: #d1d1d1;
+}
 .movies-page .global-search-container h3 {
   margin-top: 0;
 }
@@ -50,16 +56,6 @@
   flex-direction: column;
   border-bottom: 3px solid grey;
   padding: 20px;
-}
-.movies-page .filter-age-container .buttons-container {
-  display: flex;
-  justify-content: space-evenly;
-  width: 100%;
-  flex-wrap: wrap;
-}
-.movies-page .filter-age-container .buttons-container button {
-  margin-right: 5px;
-  width: 140px;
 }
 .movies-page .sorted-movies-container {
   padding: 20px;
@@ -118,4 +114,17 @@
 .selected-item {
   background-color: rgb(213, 243, 243) !important;
   color: black !important;
+}
+
+.select-container {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  outline-color: #d1d1d1;
+  background-color: rgb(213, 243, 243);
+  border-color: rgba(194, 170, 127, 0.863);
+  border-radius: 5px;
+}
+.select-container option {
+  text-align: left;
 }/*# sourceMappingURL=movies.css.map */

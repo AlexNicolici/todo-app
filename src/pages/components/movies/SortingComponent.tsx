@@ -33,19 +33,24 @@ function SortingComponent({
     <div>
       <div className="sorted-by-container">
         <h3>Sort movies by:</h3>
-        <div>
+        <select
+          className="select-container"
+          value={sortedKey}
+          onChange={(e) => setSortedKey(e.target.value)}
+        >
           {sortingCategories.map((item) => {
             return (
-              <button
+              <option
                 key={`sorting-category-${item}`}
-                onClick={(e) => onClickCategorySorting(e, item)}
+                value={item}
+                // onClick={(e) => onClickCategorySorting(e, )}item
                 className={sortedKey === item ? "selected-item" : ""}
               >
                 {item.toUpperCase()}
-              </button>
+              </option>
             );
           })}
-        </div>
+        </select>
       </div>
 
       <div className="sorted-movies-container">
