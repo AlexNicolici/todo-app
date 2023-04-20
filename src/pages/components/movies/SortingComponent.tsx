@@ -1,6 +1,7 @@
 import React from "react";
-
-const sortingCategories = ["name", "release", "author", "type"];
+import DropdownComponent from "./DropdownComponent";
+import { sortingCategories } from "../configData";
+import { DropdownInterface, SortedKeyInterface } from "../interfaces";
 
 function SortingComponent({
   sortedKey,
@@ -8,17 +9,13 @@ function SortingComponent({
   setSortedKey,
   setSortedOrderAscending,
 }: {
-  sortedKey: string;
+  sortedKey: SortedKeyInterface;
   sortedOrderAscending: boolean;
-  setSortedKey: (value: string) => void;
+  setSortedKey: (value: SortedKeyInterface) => void;
   setSortedOrderAscending: (value: boolean) => void;
 }) {
-  const onClickCategorySorting = (
-    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-    key: string
-  ) => {
-    e.preventDefault();
-    setSortedKey(key);
+  const onClickCategorySorting = (_, item: DropdownInterface) => {
+    setSortedKey(item);
   };
 
   const onClickSorting = (
@@ -31,27 +28,12 @@ function SortingComponent({
 
   return (
     <div>
-      <div className="sorted-by-container">
-        <h3>Sort movies by:</h3>
-        <select
-          className="select-container"
-          value={sortedKey}
-          onChange={(e) => setSortedKey(e.target.value)}
-        >
-          {sortingCategories.map((item) => {
-            return (
-              <option
-                key={`sorting-category-${item}`}
-                value={item}
-                // onClick={(e) => onClickCategorySorting(e, )}item
-                className={sortedKey === item ? "selected-item" : ""}
-              >
-                {item.toUpperCase()}
-              </option>
-            );
-          })}
-        </select>
-      </div>
+      <DropdownComponent
+        items={sortingCategories}
+        selected={sortedKey.id}
+        setSelected={onClickCategorySorting}
+        label={"Sort movies by:"}
+      />
 
       <div className="sorted-movies-container">
         <h3>Sort movies order:</h3>

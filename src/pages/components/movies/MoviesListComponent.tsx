@@ -1,5 +1,5 @@
-import { MovieInterface } from "@/pages/movies";
 import React from "react";
+import { MovieInterface } from "../interfaces";
 
 function MoviesListComponent({
   filterByRelease,
@@ -53,19 +53,20 @@ function MoviesListComponent({
   });
 
   const sortedList = [...searchedMoviesList].sort((a, b) => {
+    const sortedKeyToLowerCase = sortedKey.toLowerCase();
     if (sortedOrderAscending) {
-      if (a[sortedKey] < b[sortedKey]) {
+      if (a[sortedKeyToLowerCase] < b[sortedKeyToLowerCase]) {
         return -1;
       }
-      if (a[sortedKey] > b[sortedKey]) {
+      if (a[sortedKeyToLowerCase] > b[sortedKeyToLowerCase]) {
         return 1;
       }
       return 0;
     } else {
-      if (a[sortedKey] < b[sortedKey]) {
+      if (a[sortedKeyToLowerCase] < b[sortedKeyToLowerCase]) {
         return 1;
       }
-      if (a[sortedKey] > b[sortedKey]) {
+      if (a[sortedKeyToLowerCase] > b[sortedKeyToLowerCase]) {
         return -1;
       }
       return 0;
